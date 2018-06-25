@@ -27,6 +27,7 @@ namespace ResumeAPI.Controllers
             return _context.CVContent.Where(x => x.Company.Guid == guid).Include(x => x.Company).Include(x => x.Company.Address);
         }
 
+
         //// GET: api/CVContents/5
         //[HttpGet("{id}")]
         //public async Task<IActionResult> GetCVContent([FromRoute] int id)

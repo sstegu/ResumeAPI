@@ -14,27 +14,8 @@ using System.Threading.Tasks;
 namespace ResumeAPITests
 {
     [TestClass]
-    public class CVContentsControllerTest
+    public class CVContentsControllerTest : ControllerTest
     {
-        TestServer _server;
-        HttpClient _client;
-
-        public CVContentsControllerTest()
-        {
-            var confBuilder = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("unitTestSettings.json");//had to modify project config to copy this file to build output
-
-            IConfiguration config = confBuilder.Build();
-
-            var builder = new WebHostBuilder()
-                .UseConfiguration(config)
-                .UseEnvironment("Development")
-                .UseStartup<ResumeAPITests.Startup>();
-
-            _server = new TestServer(builder);
-            _client = _server.CreateClient();
-        }
 
         [TestMethod]
         public async Task TestGetCVData()

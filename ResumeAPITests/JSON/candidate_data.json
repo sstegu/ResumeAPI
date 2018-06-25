@@ -1,0 +1,60 @@
+﻿{
+  "FirstName": "fname",
+  "LastName": "lname",
+  "Address": {
+    "Address1": "444 some road",
+    "City": "Mississauga",
+    "Province": "ON",
+    "PostCode": ""
+  },
+  "Phone": "55555555555",
+  "Email": "email@gmail.com",
+  "Education": [
+    {
+      "Institution": "University of Toronto",
+      "Degree": "Computer Science, Bachelor of Science",
+      "Year": 1997
+    }
+  ],
+  "Skills": "AJAX, Ant, ASP.NET, Aurelia, bootstrap, C#, Client/server, CSS, Debugging, Design Patterns, DurandalJS, Eclipse, Functional Requirements, HTML, IIS, Java, Javascript, jQuery, JSON, JSP, JUnit, Knockout, Microsoft SQL Server, MVC, .Net, .Net Core, NUnit, Oracle, Project Estimation, Requirements Analysis, Responsive Web Design, Software Development, SOAP, SSL Certificates, SSO, Struts, SVN, Trac, Typescript, Visual Studio, WCF, Web API, Web Development, Web Services, Weblogic, WS-Security, XML, XSL, XSLT",
+  "WorkHistory": [
+    {
+      "Name": "Conduent / Xerox / ACS / HP / EDS / Towers Perrin",
+      "Start": "1999-07-1T00:00:00.000Z",
+      "End": null,
+      "Description": "Analyze, design, develop, implement, test and maintain various benefits enrollment and retirement back-end administration and client web applications.~~Interview users and develop specifications.~~Provide client teams and management with work estimates.~~Troubleshoot and provide solutions to problems with applications.~~Aid  & instruct implementation teams.~~Liaison with 3rd party vendors",
+      "Projects": [
+        {
+          "Order": 1,
+          "Name": "US Affordable Care Act Process and Web Service Client",
+          "Description": "Application to submit information returns to the IRS reporting on individual’s health insurance coverage using a WCF client.",
+          "Environment": "Oracle, Visual Studio, .Net, C#, SOAP, WS-Security"
+        },
+        {
+          "Order": 2,
+          "Name": "Benefits Administration Web – Health & Welfare/Retirement benefits web",
+          "Description": "Analyze, design, develop, implement, test and maintain various benefits enrollment and retirement back-end administration and client web applications.~~Interview users and develop specifications.~~Provide client teams and management with work estimates.~~Troubleshoot and provide solutions to problems with applications.~~Aid  & instruct implementation teams.~~Liaison with 3rd party vendors.",
+          "Environment": "Visual Studio, ASP.NET, bootstrap, C#, DurandalJS, Javascript, JQuery, JSON, Knockout, XML, XSL, HTML, CSS, IIS, SVN, NUnit, Web API"
+        },
+        {
+          "Order": 3,
+          "Name": "DB Connect – retirement administration application",
+          "Description": "Pension administration application that allows users to run on-demand pension calculations, generate and track participant correspondence, process batch jobs and create on-demand reports across the employee population.~~Peer review code",
+          "Environment": "Java, Eclipse IDE, Visual Studio 6.0, SonicMQ, Tomcat IIS, Microsoft Access , Visual SourceSafe, Oracle 8i, XML, XSL, JUnit"
+        },
+        {
+          "Order": 4,
+          "Name": "Defined Benefits Module (Cobol to Java Conversion) – retirement administration tool",
+          "Description": "Convert existing Cobol based web interface with an Oracle back end to a J2EE web application.~~Create new and update existing EJBs to facilitate access to existing Oracle databases.~~Facilitate the use of Eclipse (IDE) with other programmers. Help set up their development environment so they could deploy and debug applications locally.",
+          "Environment": "Java/J2EE, EJB, STRUTS, JSP, HTML, JavaScript, Eclipse, Oracle 8.x, Weblogic 8.1"
+        },
+        {
+          "Order": 5,
+          "Name": "Defined Benefits Web Application - web application allowing clients to access retirement information",
+          "Description": "Multilingual core web application allowing clients to view retirement specific data and run pension estimates.~~Responsible for enhancements, troubleshooting and aiding client teams in implementations of product.~~Facilitate the use of Eclipse (IDE) with other programmers. Help set up their development environment so they could deploy and debug applications locally.",
+          "Environment": "Java/J2EE, EJB, STRUTS, JSP, HTML, JavaScript, Eclipse, Oracle 8.x, Weblogic 8.1"
+        }
+      ]
+    }
+  ]
+}

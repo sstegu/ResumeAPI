@@ -11,7 +11,6 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ResumeAPI;
-using ResumeAPI.ExtensionMethods;
 using ResumeAPI.Models;
 
 namespace ResumeAPITests
@@ -48,6 +47,8 @@ namespace ResumeAPITests
 
             services.AddSingleton<IFileProvider>(_hostingEnvironment.ContentRootFileProvider);
 
+            services.AddScoped<DataSeeder>();
+
             services.AddMvc();
 
 
@@ -64,7 +65,6 @@ namespace ResumeAPITests
 
             app.UseMvc();
 
-            app.SeedData(fileProvider, dataContext);
 
         }
 

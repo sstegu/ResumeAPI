@@ -12,6 +12,7 @@ namespace ResumeAPI.Models
         public DbSet<Address> Address { get; set; }
         public DbSet<Company> Company { get; set; }
         public DbSet<CVContent> CVContent { get; set; }
+        public DbSet<Candidate> Candidate { get; set; }
 
         public DataContext(DbContextOptions<DataContext> context) : base(context)
         {

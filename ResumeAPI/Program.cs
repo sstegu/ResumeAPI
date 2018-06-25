@@ -7,7 +7,9 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ResumeAPI.Models;
 
 namespace ResumeAPI
@@ -23,8 +25,10 @@ namespace ResumeAPI
                 var services = scope.ServiceProvider;
                 try
                 {
+                    var seeder = services.GetRequiredService<DataSeeder>();
                     var context = services.GetRequiredService<DataContext>();
                     context.Database.EnsureCreated();
+                    seeder.SeedData();
                 }
                 catch (Exception e)
                 {
@@ -36,11 +40,18 @@ namespace ResumeAPI
             host.Run();
         }
 
+
         public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<ResumeAPI.Startup>()
-                .Build();
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<ResumeAPI.Startup>()
+        .Build();
 
 
     }
 }
+
+
+
+
+
+

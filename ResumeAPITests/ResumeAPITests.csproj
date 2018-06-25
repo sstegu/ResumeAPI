@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="JSON\candidate_data.json" />
+    <None Remove="JSON\resume.json" />
     <None Remove="unitTestSettings.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="JSON\candidate_data.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="JSON\resume.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="unitTestSettings.json">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -38,6 +46,7 @@
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
     <Copy SourceFiles="unitTestSettings.json" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="JSON\cv_data.json" DestinationFolder="$(OutDir)\JSON" />
+    <Copy SourceFiles="JSON\candidate_data.json" DestinationFolder="$(OutDir)\JSON" />
     <Copy SourceFiles="Content\test_content.html" DestinationFolder="$(OutDir)\Content" />
   </Target>
 
