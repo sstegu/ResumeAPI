@@ -1,0 +1,33 @@
+<address>
+    <strong>{{candidate.firstName}} {{candidate.lastName}}</strong><br />
+    {{candidate.address.address1 | uppercase}}<br />
+    {{candidate.address.city | uppercase}} {{candidate.address.province | uppercase}} {{candidate.address.postCode}}<br />
+    Phone: <a href="+1{{candidate.phone}}">{{candidate.phone}}</a><br />
+    <a href="mailto:{{candidate.email}}">{{candidate.email}}</a>
+</address>
+
+<h2>Education</h2>
+<ul>
+    <li *ngFor="let ed of candidate.education">
+        <strong>{{ed.institution}}</strong><br />
+        {{ed.degree}} {{ed.year}}<br />
+    </li>
+</ul>
+
+<h2>Skills</h2>
+<div>{{candidate.skills}}</div>
+
+<h2>Work History</h2>
+<ul>
+    <li *ngFor="let history of candidate.workHistory">
+        <h3>{{history.name}} {{history.start | date:'longDate'}} - {{history.end != null ? history.end : "Present"}}</h3>
+        <div>{{history.description }}</div>
+        <ul>
+            <li *ngFor="let proj of history.projects">
+                <h4>{{proj.name}}</h4>
+                <div>{{proj.description}}</div><br />
+                <strong>Environment: </strong>{{proj.environment}}
+            </li>
+        </ul>
+    </li>
+</ul>

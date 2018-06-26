@@ -21,11 +21,13 @@ namespace ResumeAPI.Controllers
         }
 
         // GET: api/Candidates
-        [HttpGet]
-        public IEnumerable<Candidate> GetCandidate()
-        {
-            return _context.Candidate;
-        }
+        //[HttpGet]
+        //public IEnumerable<Candidate> GetCandidate()
+        //{
+        //    return _context.Candidate.Include(x => x.Address)
+        //                                            .Include(x => x.Education)
+        //                                            .Include(x => x.WorkHistory).ThenInclude(x => x.Projects);
+        //}
 
         // GET: api/Candidates/5
         [HttpGet("{id}")]
@@ -35,8 +37,11 @@ namespace ResumeAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            var candidate = await _context.Candidate.SingleOrDefaultAsync(m => m.ID == id);
+            //FYI..minor pain point-> the .ThenInclude(x=>x.Projects) is not handled by intellisense but compiles fine 
+            var candidate = await _context.Candidate.Include(x => x.Address)
+                                                    .Include(x => x.Education)
+                                                    .Include(x => x.WorkHistory).ThenInclude(x => x.Projects)
+                                                    .SingleOrDefaultAsync(m => m.ID == id);
 
             if (candidate == null)
             {
@@ -47,79 +52,79 @@ namespace ResumeAPI.Controllers
         }
 
         // PUT: api/Candidates/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCandidate([FromRoute] int id, [FromBody] Candidate candidate)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCandidate([FromRoute] int id, [FromBody] Candidate candidate)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            if (id != candidate.ID)
-            {
-                return BadRequest();
-            }
+        //    if (id != candidate.ID)
+        //    {
+        //        return BadRequest();
+        //    }
 
-            _context.Entry(candidate).State = EntityState.Modified;
+        //    _context.Entry(candidate).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CandidateExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CandidateExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
-        // POST: api/Candidates
-        [HttpPost]
-        public async Task<IActionResult> PostCandidate([FromBody] Candidate candidate)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// POST: api/Candidates
+        //[HttpPost]
+        //public async Task<IActionResult> PostCandidate([FromBody] Candidate candidate)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            _context.Candidate.Add(candidate);
-            await _context.SaveChangesAsync();
+        //    _context.Candidate.Add(candidate);
+        //    await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCandidate", new { id = candidate.ID }, candidate);
-        }
+        //    return CreatedAtAction("GetCandidate", new { id = candidate.ID }, candidate);
+        //}
 
-        // DELETE: api/Candidates/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCandidate([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //// DELETE: api/Candidates/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteCandidate([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var candidate = await _context.Candidate.SingleOrDefaultAsync(m => m.ID == id);
-            if (candidate == null)
-            {
-                return NotFound();
-            }
+        //    var candidate = await _context.Candidate.SingleOrDefaultAsync(m => m.ID == id);
+        //    if (candidate == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            _context.Candidate.Remove(candidate);
-            await _context.SaveChangesAsync();
+        //    _context.Candidate.Remove(candidate);
+        //    await _context.SaveChangesAsync();
 
-            return Ok(candidate);
-        }
+        //    return Ok(candidate);
+        //}
 
-        private bool CandidateExists(int id)
-        {
-            return _context.Candidate.Any(e => e.ID == id);
-        }
+        //private bool CandidateExists(int id)
+        //{
+        //    return _context.Candidate.Any(e => e.ID == id);
+        //}
     }
 }

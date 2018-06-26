@@ -33,6 +33,7 @@ namespace ResumeAPITests
 
             Assert.IsNotNull(candidate);
 
+            Assert.IsTrue(candidate.WorkHistory[0].Projects.Count == 5, "candidate has 5 projects");
         }
     }
 }

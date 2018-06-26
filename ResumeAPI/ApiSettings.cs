@@ -7,6 +7,6 @@ namespace ResumeAPI
 {
     public class ApiSettings
     {
-
+        public string[] CorsOrigins { get; set; }
     }
 }

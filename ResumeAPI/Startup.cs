@@ -51,17 +51,19 @@ namespace ResumeAPI
 
             services.AddMvc();
 
-
+            services.AddCors();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IFileProvider fileProvider, DataContext dataContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IFileProvider fileProvider, DataContext dataContext, IOptions<ApiSettings> settings)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            //use cross origin resource sharing
+            app.UseCors(policy => policy.WithOrigins(settings.Value.CorsOrigins).WithMethods("GET"));
 
             app.UseMvc();
 
