@@ -1,23 +1,37 @@
 import { Component, Inject } from '@angular/core';
-import { Http } from '@angular/http';
+import { ApiService } from '../../api';
 
 @Component({
-    selector: 'home',
+    selector: 'resume',
     templateUrl: './resume.component.html',
-    styleUrls: ['./resume.component.css']
+    styleUrls: ['./resume.component.css'],
+    providers: [ApiService]
 })
+
 export class ResumeComponent {
     public candidate: JSON;
+    public error: boolean;
+    public errorMessage: string = "Well...that as unexpected.  Do I get the job??";
+    public loading: boolean = true;
 
-    constructor(http: Http) {
-
-        http.get("http://localhost:55379/api/Candidates/1").subscribe(result => {
+    constructor(api: ApiService) {
+        this.error = false;
+        api.GetResumeData("1").subscribe(result => {
+            this.loading = false;
             if (result.ok) {
                 this.candidate = result.json();
-                console.debug(this.candidate);
+            } else {
+                this.error = true;
             }
-        }, error => console.error(error));
+
+        }, error => {
+            console.error(error)
+            this.loading = false;
+            this.error = true;
+        });
 
     }
+
 }
+
 

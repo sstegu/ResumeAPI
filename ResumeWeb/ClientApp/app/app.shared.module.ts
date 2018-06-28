@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ResumeComponent } from './components/resume/resume.component';
+import { SplitStringPipe } from './components/resume/splitStringPipe';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { ResumeComponent } from './components/resume/resume.component';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        ResumeComponent
+        ResumeComponent,
+        SplitStringPipe
     ],
     imports: [
         CommonModule,
@@ -27,8 +29,6 @@ import { ResumeComponent } from './components/resume/resume.component';
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
             { path: 'resume', component: ResumeComponent },
             { path: '**', redirectTo: 'home' }
         ])

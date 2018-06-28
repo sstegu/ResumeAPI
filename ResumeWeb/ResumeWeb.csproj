@@ -21,11 +21,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\app\components\resume\candidate.ts" />
+    <None Remove="ClientApp\app\api.ts" />
+    <None Remove="ClientApp\app\components\resume\splitStringPipe.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\app\components\resume\candidate.ts" />
+    <TypeScriptCompile Include="ClientApp\app\api.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\resume\splitStringPipe.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
