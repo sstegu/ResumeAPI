@@ -47,6 +47,13 @@ namespace ResumeAPI.Controllers
             {
                 return NotFound();
             }
+            //order data elements...could have queried each element separately including an order too
+            candidate.Education = candidate.Education.OrderByDescending(x => x.Year).ToList<Education>();
+            candidate.WorkHistory = candidate.WorkHistory.OrderByDescending(x => x.Start).ToList<WorkHistory>();
+            foreach (var workHistory in candidate.WorkHistory)
+            {
+                workHistory.Projects = workHistory.Projects.OrderBy(x => x.Order).ToList();
+            }
 
             return Ok(candidate);
         }

@@ -2,7 +2,7 @@
   {
     "Company": {
       "Name": "XYZ Company",
-      "Guid": "efbc5b84-004b-4ac2-b53d-40aedf128274",
+      "Guid": "efbc5b84004b4ac2b53d40aedf128274",
       "Address": {
         "Address1": "555 some st",
         "City": "Mississauga",
@@ -24,7 +24,7 @@
   {
     "Company": {
       "Name": "ABC Company",
-      "Guid": "adcf1c21-83c8-4681-9739-716ab2d11c91",
+      "Guid": "adcf1c2183c846819739716ab2d11c91",
       "Address": {
         "Address1": "666 some st",
         "City": "Mississauga",

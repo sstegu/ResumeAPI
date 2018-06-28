@@ -28,18 +28,15 @@ namespace ResumeAPITests
 
             Console.WriteLine($"data returned: {data}");
 
-            var cvContent = JsonConvert.DeserializeObject<List<CVContent>>(data);
+            var cvContent = JsonConvert.DeserializeObject<CVContent>(data);
 
-            Assert.IsTrue(cvContent.Count == 2, "has two cv records");
 
-            foreach (var cv in cvContent)
-            {
-                Assert.IsNotNull(cv.Company, $"Company populated for ID {cv.ID}");
+            Assert.IsNotNull(cvContent.Company, $"Company populated for ID {cvContent.ID}");
 
-                Assert.IsTrue(cv.Company.Guid == "efbc5b84-004b-4ac2-b53d-40aedf128274", "Only company XYZ records");
+            Assert.IsTrue(cvContent.Company.Guid == "efbc5b84-004b-4ac2-b53d-40aedf128274", "Only company XYZ records");
 
-                Assert.IsNotNull(cv.Company.Address, $"Address populated for company {cv.Company.Name}");
-            }
+            Assert.IsNotNull(cvContent.Company.Address, $"Address populated for company {cvContent.Company.Name}");
+
 
 
         }

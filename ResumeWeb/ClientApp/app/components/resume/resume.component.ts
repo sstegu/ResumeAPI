@@ -11,7 +11,7 @@ import { ApiService } from '../../api';
 export class ResumeComponent {
     public candidate: JSON;
     public error: boolean;
-    public errorMessage: string = "Well...that as unexpected.  Do I get the job??";
+    public errorMessage: string = "Well...that was unexpected.  Do I get the job??";
     public loading: boolean = true;
 
     constructor(api: ApiService) {

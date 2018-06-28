@@ -22,9 +22,11 @@ namespace ResumeAPI.Controllers
 
         // GET: api/CVContents
         [HttpGet("{guid}")]
-        public IEnumerable<CVContent> GetCVContent([FromRoute] string guid)
+        public CVContent GetCVContent([FromRoute] string guid)
         {
-            return _context.CVContent.Where(x => x.Company.Guid == guid).Include(x => x.Company).Include(x => x.Company.Address);
+            return _context.CVContent.Include(x => x.Company)
+                                     .Include(x => x.Company.Address)
+                                     .SingleOrDefault(x => x.Company.Guid == guid && x.CVType == CVContentType.CoverLetter);
         }
 
 

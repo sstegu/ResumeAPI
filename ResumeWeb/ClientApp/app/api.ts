@@ -5,22 +5,21 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ApiService {
     private http: Http;
-    private url: string;
 
-    constructor(http: Http, @Inject("API_URL") url: string) {
+    constructor(http: Http, @Inject("API_URL") private url: string, @Inject('COMPANY') private cguid: string) {
         this.http = http;
-        this.url = url;
     }
 
     public GetResumeData(id: string): Observable<Response> {
-        return this.GetData(this.url + "/api/Candidates/" + id);
+        return this.GetData("/api/Candidates/" + id);
     }
 
-    public GetCoverData(guid: string): Observable<Response> {
-        return this.GetData(this.url + "/api/CVContents/" + guid);
+    public GetCoverData(): Observable<Response> {
+        let guid: string = this.cguid != null ? this.cguid : 'default';
+        return this.GetData("/api/CVContents/" + guid);
     }
 
-    private GetData(url: string): Observable<Response> {
-        return this.http.get(url);
+    private GetData(path: string): Observable<Response> {
+        return this.http.get(this.url + path);
     }
 }
