@@ -31,6 +31,7 @@ namespace ResumeAPI.Controllers
 
         // GET: api/Candidates/5
         [HttpGet("{id}")]
+        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
         public async Task<IActionResult> GetCandidate([FromRoute] int id)
         {
             if (!ModelState.IsValid)

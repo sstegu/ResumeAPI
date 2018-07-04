@@ -22,6 +22,7 @@ namespace ResumeAPI.Controllers
 
         // GET: api/CVContents
         [HttpGet("{guid}")]
+        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
         public CVContent GetCVContent([FromRoute] string guid)
         {
             return _context.CVContent.Include(x => x.Company)

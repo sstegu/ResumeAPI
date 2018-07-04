@@ -49,6 +49,8 @@ namespace ResumeAPI
 
             services.AddScoped<DataSeeder>();
 
+            services.AddResponseCaching();
+
             services.AddMvc();
 
             services.AddCors();
