@@ -1,7 +1,46 @@
-<div *ngIf="cvData">
-    <div class="container-fluid">
+<div class="container-fluid">
+    <h2></h2>
+    <div class="row" [hidden]="cvData!=null">
+        <div class="col-md-5">
+            <form #cForm="ngForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input id="firstName" class="form-control" type="text" required
+                           [(ngModel)]="firstName" name="firstName" #firstNameNg="ngModel" />
+                </div>
+                <div [hidden]="firstNameNg.valid || firstNameNg.pristine" class="alert alert-danger">
+                    Your first name is required.
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input id="lastName" class="form-control" type="text" required
+                           [(ngModel)]="lastName" name="lastName" #lastNameNg="ngModel" />
+                </div>
+                <div [hidden]="lastNameNg.valid || lastNameNg.pristine" class="alert alert-danger">
+                    Your last name is required.
+                </div>
+                <div class="form-group">
+                    <label for="company">Please enter your code:</label>
+                    <input id="company" class="form-control" type="text" required
+                           [(ngModel)]="company" name="company" #companyNg="ngModel" />
+                </div>
+                <div [hidden]="companyNg.valid || companyNg.pristine" class="alert alert-danger">
+                    Company is required
+                </div>
+                <button class="btn btn-success" [disabled]="!cForm.valid" (click)="getCoverData()">Click me</button>
+
+            </form>
+        </div>
+    </div>
+    <div *ngIf="cvData">
         <h2>{{cvData.company.name}}</h2>
 
+        <h4>Dear {{firstName}} {{lastName}},</h4>
+
         <div [innerHTML]="cvData.content"></div>
+
+        <p>Sincerely,</p>
+        <p><strong>FirstName LastName</strong></p>
     </div>
+
 </div>

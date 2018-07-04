@@ -39,10 +39,6 @@
     <ProjectReference Include="..\ResumeAPI\ResumeAPI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
-
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
     <Copy SourceFiles="unitTestSettings.json" DestinationFolder="$(OutDir)" />
     <Copy SourceFiles="JSON\cv_data.json" DestinationFolder="$(OutDir)\JSON" />

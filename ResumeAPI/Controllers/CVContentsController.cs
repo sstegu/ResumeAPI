@@ -26,7 +26,7 @@ namespace ResumeAPI.Controllers
         {
             return _context.CVContent.Include(x => x.Company)
                                      .Include(x => x.Company.Address)
-                                     .SingleOrDefault(x => x.Company.Guid == guid && x.CVType == CVContentType.CoverLetter);
+                                     .FirstOrDefault(x => x.Company.Guid == guid && x.CVType == CVContentType.CoverLetter);
         }
 
 

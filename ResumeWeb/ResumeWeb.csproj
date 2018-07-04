@@ -17,15 +17,20 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="ClientApp\app\components\spinner\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="ClientApp\app\components\spinner\**" />
+    <None Remove="ClientApp\app\components\spinner\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ClientApp\app\api.ts" />
     <None Remove="ClientApp\app\components\resume\splitStringPipe.ts" />
+    <None Remove="ClientApp\app\globals.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\globals.ts" />
     <TypeScriptCompile Include="ClientApp\app\api.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\resume\splitStringPipe.ts" />
   </ItemGroup>

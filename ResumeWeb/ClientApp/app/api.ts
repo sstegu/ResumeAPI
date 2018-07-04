@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class ApiService {
     private http: Http;
 
-    constructor(http: Http, @Inject("API_URL") private url: string, @Inject('COMPANY') private cguid: string) {
+    constructor(http: Http, @Inject("API_URL") private url: string) {
         this.http = http;
     }
 
@@ -14,8 +14,8 @@ export class ApiService {
         return this.GetData("/api/Candidates/" + id);
     }
 
-    public GetCoverData(): Observable<Response> {
-        let guid: string = this.cguid != null ? this.cguid : 'default';
+    public GetCoverData(cguid: string): Observable<Response> {
+        let guid: string = cguid != null ? cguid : 'default';
         return this.GetData("/api/CVContents/" + guid);
     }
 

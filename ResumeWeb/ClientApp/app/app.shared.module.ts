@@ -11,6 +11,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ResumeComponent } from './components/resume/resume.component';
 import { SplitStringPipe } from './components/resume/splitStringPipe';
+import { Globals } from './globals';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { SplitStringPipe } from './components/resume/splitStringPipe';
         ResumeComponent,
         SplitStringPipe
     ],
+    providers: [Globals],
     imports: [
         CommonModule,
         HttpModule,
