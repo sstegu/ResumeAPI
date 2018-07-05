@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { ApiService } from '../../api';
 import { Globals } from '../../globals';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'home',
@@ -15,29 +16,41 @@ export class HomeComponent {
     private lastName: string = "";
 
     constructor(private api: ApiService, private globals: Globals) {
-        this.company = "";
-        if (this.globals.companyGuid != null && this.globals.companyGuid.trim().length > 0) {
-            this.company = this.globals.companyGuid;
-            this.firstName = this.globals.firstName;
-            this.lastName = this.globals.lastName;
-        }
-        this.getCoverData();
+        Promise.resolve(null).then(() => { this.globals.waiting$.next(true) })
+            .then(() => {
+                this.company = "";
+                if (this.globals.companyGuid != null && this.globals.companyGuid.trim().length > 0) {
+                    this.company = this.globals.companyGuid;
+                    this.firstName = this.globals.firstName;
+                    this.lastName = this.globals.lastName;
+                }
+                this.getCoverData();
+            }).then(() => this.globals.waiting$.next(false));
+
 
     }
 
-    private getCoverData() {
+    private getCoverData(): void {
 
         if (this.company != null && this.company.trim().length != 0) {
-            this.api.GetCoverData(this.company).subscribe(result => {
-                if (result.ok) {
-                    this.cvData = result.json();
-                    //save global
-                    this.globals.companyGuid = this.company;
-                    this.globals.firstName = this.firstName;
-                    this.globals.lastName = this.lastName;
-                }
-            });
+            Promise.resolve(null).then(() => { this.globals.waiting$.next(true) })
+                .then(() => {
+                    this.api.GetCoverData(this.company).subscribe(result => {
+                        if (result.ok) {
+                            this.cvData = result.json();
+                            //save global
+                            this.globals.companyGuid = this.company;
+                            this.globals.firstName = this.firstName;
+                            this.globals.lastName = this.lastName;
+
+                        }
+                    });
+                })
+                .then(() => {
+                    this.globals.waiting$.next(false);
+                });
         }
 
     }
+
 }

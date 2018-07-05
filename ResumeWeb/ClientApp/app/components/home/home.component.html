@@ -8,7 +8,7 @@
                     <input id="firstName" class="form-control" type="text" required
                            [(ngModel)]="firstName" name="firstName" #firstNameNg="ngModel" />
                 </div>
-                <div [hidden]="firstNameNg.valid || firstNameNg.pristine" class="alert alert-danger">
+                <div *ngIf="!firstNameNg.valid && !firstNameNg.pristine" class="alert alert-danger">
                     Your first name is required.
                 </div>
                 <div class="form-group">
@@ -16,7 +16,7 @@
                     <input id="lastName" class="form-control" type="text" required
                            [(ngModel)]="lastName" name="lastName" #lastNameNg="ngModel" />
                 </div>
-                <div [hidden]="lastNameNg.valid || lastNameNg.pristine" class="alert alert-danger">
+                <div *ngIf="!lastNameNg.valid && !lastNameNg.pristine" class="alert alert-danger">
                     Your last name is required.
                 </div>
                 <div class="form-group">
@@ -24,8 +24,8 @@
                     <input id="company" class="form-control" type="text" required
                            [(ngModel)]="company" name="company" #companyNg="ngModel" />
                 </div>
-                <div [hidden]="companyNg.valid || companyNg.pristine" class="alert alert-danger">
-                    Company is required
+                <div *ngIf="!companyNg.valid && !companyNg.pristine" class="alert alert-danger">
+                    Your code is required.
                 </div>
                 <button class="btn btn-success" [disabled]="!cForm.valid" (click)="getCoverData()">Click me</button>
 

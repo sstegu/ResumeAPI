@@ -33,6 +33,7 @@ namespace ResumeAPI
             services.AddLogging(builder =>
             {
                 builder.AddConfiguration(Configuration.GetSection("Logging"))
+                    .AddAzureWebAppDiagnostics()
                     .AddConsole()
                     .AddDebug();
 
@@ -40,8 +41,10 @@ namespace ResumeAPI
 
             services.Configure<ApiSettings>(Configuration.GetSection("ApiSettings"));
 
+
             services.AddDbContext<DataContext>(options =>
             {
+                //options.UseInMemoryDatabase("cvdb");
                 options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
 
