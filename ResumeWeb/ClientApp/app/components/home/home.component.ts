@@ -5,7 +5,7 @@ import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'home',
-    styleUrls: ['../../css/common.css'],
+    styleUrls: ['../../css/common.css', './home.component.css'],
     templateUrl: './home.component.html',
     providers: [ApiService]
 })
