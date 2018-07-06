@@ -34,6 +34,7 @@ import { Globals } from './globals';
             { path: 'resume', component: ResumeComponent },
             { path: '**', redirectTo: 'home' }
         ])
+
     ]
 })
 export class AppModuleShared {

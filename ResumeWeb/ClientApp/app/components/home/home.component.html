@@ -2,33 +2,43 @@
     <h2></h2>
     <header class="home-form">
         <div class="container">
-            <div class="row" [hidden]="cvData!=null">
+
+            <div class="row" *ngIf="!cvData">
                 <div class="col-md-4">&nbsp;</div>
                 <div class="col-md-4">
+                    <div *ngIf="wait" class="alert alert-info">
+                        Please wait...
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger">
+                        Ooops something went wrong...
+                    </div>
                     <form #cForm="ngForm">
                         <div class="form-group">
                             <label for="firstName">First Name</label>
                             <input id="firstName" class="form-control" type="text" required pattern="[a-zA-Z]+" maxlength="20"
-                                   [(ngModel)]="firstName" name="firstName" #firstNameNg="ngModel" placeholder="Enter your first name..." />
+                                   [(ngModel)]="firstName" name="firstName" #firstNameNg="ngModel" placeholder="Enter your first name..."
+                                   [disabled]="wait" />
                         </div>
-                        <div *ngIf="!firstNameNg.valid && !firstNameNg.pristine" class="alert alert-danger">
-                            Your first name is required.
+                        <div *ngIf="!firstNameNg.valid && !firstNameNg.pristine && !wait" class="alert alert-danger">
+                            A valid first name is required.
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name</label>
                             <input id="lastName" class="form-control" type="text" required pattern="[a-zA-Z]+" maxlength="20"
-                                   [(ngModel)]="lastName" name="lastName" #lastNameNg="ngModel" placeholder="Enter your last name..." />
+                                   [(ngModel)]="lastName" name="lastName" #lastNameNg="ngModel" placeholder="Enter your last name..."
+                                   [disabled]="wait" />
                         </div>
-                        <div *ngIf="!lastNameNg.valid && !lastNameNg.pristine" class="alert alert-danger">
-                            Your last name is required.
+                        <div *ngIf="!lastNameNg.valid && !lastNameNg.pristine && !wait" class="alert alert-danger">
+                            A valid last name is required.
                         </div>
                         <div class="form-group">
                             <label for="company">Code</label>
                             <input id="company" class="form-control" type="text" required
-                                   [(ngModel)]="company" name="company" #companyNg="ngModel" placeholder="Enter your code..." pattern="[a-zA-Z0-9]+" maxlength="32" />
+                                   [(ngModel)]="company" name="company" #companyNg="ngModel" placeholder="Enter your code..." pattern="[a-zA-Z0-9]+" maxlength="32"
+                                   [disabled]="wait" />
                         </div>
-                        <div *ngIf="!companyNg.valid && !companyNg.pristine" class="alert alert-danger">
-                            Your code is required.
+                        <div *ngIf="!companyNg.valid && !companyNg.pristine && !wait" class="alert alert-danger">
+                            A valid code is required.
                         </div>
                         <button class="btn btn-success center-block" [disabled]="!cForm.valid" (click)="getCoverData()">Retrieve Cover Letter</button>
 

@@ -10,29 +10,27 @@ import { Globals } from '../../globals';
 })
 
 export class ResumeComponent {
-    public candidate: JSON;
-    public error: boolean;
-    public errorMessage: string = "Well...that was unexpected.  Do I get the job??";
+    private candidate: JSON;
+    private error: boolean;
+    private wait: boolean;
+    private errorMessage: string = "Well...that was unexpected.  Do I get the job??";
 
     constructor(api: ApiService, private globals: Globals) {
         this.error = false;
-        Promise.resolve(null).then(() => this.globals.waiting$.next(true))
-            .then(() => {
-                api.GetResumeData("1").subscribe(result => {
-                    if (result.ok) {
-                        this.candidate = result.json();
-                    } else {
-                        this.error = true;
-                    }
+        this.wait = true;
+        api.GetResumeData("1").subscribe(result => {
+            if (result.ok) {
+                this.candidate = result.json();
+            }
+        }, error => {
+            console.error(error)
+            this.error = true;
+            this.wait = false;
+        }, () => {
+            this.wait = false;
+        })
 
-                }, error => {
-                    console.error(error)
-                    this.error = true;
 
-                }, () => { });
-
-            })
-            .then(() => this.globals.waiting$.next(false));
 
 
     }

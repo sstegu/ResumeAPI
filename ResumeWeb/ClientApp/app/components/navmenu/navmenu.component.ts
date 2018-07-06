@@ -6,4 +6,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./navmenu.component.css']
 })
 export class NavMenuComponent {
+
+    show: boolean = false;
+
+    toggleCollapse(): void {
+        this.show = !this.show;
+    }
+
 }
