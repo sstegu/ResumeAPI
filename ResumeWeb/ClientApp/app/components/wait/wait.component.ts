@@ -10,7 +10,7 @@ import { Globals } from '../../globals';
 })
 export class WaitComponent {
 
-    constructor(private globals: Globals) {
+    constructor(public globals: Globals) {
 
     }
 

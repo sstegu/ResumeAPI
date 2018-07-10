@@ -10,7 +10,7 @@ import { ChangeDetectorRef } from '@angular/core';
     providers: [ApiService]
 })
 export class HomeComponent {
-    private cvData: JSON;
+    public cvData: JSON;
     private error: boolean = false;
     private wait: boolean = false;
     private company: string = "";
