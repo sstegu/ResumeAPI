@@ -6,5 +6,5 @@ export class Globals {
     public companyGuid: string;
     public firstName: string;
     public lastName: string;
-    public waiting$: Subject<boolean> = new Subject<boolean>();
+    public waiting: boolean;
 }

@@ -44,8 +44,8 @@ namespace ResumeAPI
 
             services.AddDbContext<DataContext>(options =>
             {
-                //options.UseInMemoryDatabase("cvdb");
-                options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseInMemoryDatabase("cvdb");
+                //options.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddSingleton<IFileProvider>(_hostingEnvironment.ContentRootFileProvider);

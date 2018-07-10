@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
     selector: 'nav-menu',
@@ -13,4 +13,9 @@ export class NavMenuComponent {
         this.show = !this.show;
     }
 
+    @HostListener('window:resize')
+    onResize() {
+        if (this.show)
+            this.show = false;
+    }
 }

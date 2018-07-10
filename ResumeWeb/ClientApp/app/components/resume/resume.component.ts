@@ -17,7 +17,7 @@ export class ResumeComponent {
 
     constructor(api: ApiService, private globals: Globals) {
         this.error = false;
-        this.wait = true;
+        this.globals.waiting = true;
         api.GetResumeData("1").subscribe(result => {
             if (result.ok) {
                 this.candidate = result.json();
@@ -25,9 +25,9 @@ export class ResumeComponent {
         }, error => {
             console.error(error)
             this.error = true;
-            this.wait = false;
+            this.globals.waiting = false;
         }, () => {
-            this.wait = false;
+            this.globals.waiting = false;
         })
 
 

@@ -18,7 +18,7 @@ export class HomeComponent {
     private lastName: string = "";
 
     constructor(private api: ApiService, private globals: Globals) {
-        this.wait = false;
+        this.globals.waiting = false;
         this.company = "";
         if (this.globals.companyGuid != null && this.globals.companyGuid.trim().length > 0) {
             this.company = this.globals.companyGuid;
@@ -33,7 +33,7 @@ export class HomeComponent {
 
     private getCoverData(): void {
         this.error = false;
-        this.wait = true;
+        this.globals.waiting = true;
 
         this.api.GetCoverData(this.company).subscribe(result => {
             if (result.ok) {
@@ -46,10 +46,10 @@ export class HomeComponent {
             }
         }, error => {
             this.error = true;
-            this.wait = false;
+            this.globals.waiting = false;
         },
             () => {
-                this.wait = false;
+                this.globals.waiting = false;
             });
 
 
