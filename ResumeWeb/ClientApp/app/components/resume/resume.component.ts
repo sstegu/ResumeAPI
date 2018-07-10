@@ -11,7 +11,7 @@ import { Globals } from '../../globals';
 
 export class ResumeComponent {
     public candidate: JSON;
-    private error: boolean;
+    protected error: boolean;
     private wait: boolean;
     private errorMessage: string = "Well...that was unexpected.  Do I get the job??";
 
