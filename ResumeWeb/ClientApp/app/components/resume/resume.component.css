@@ -6,3 +6,23 @@
     ul.projectDesc, ul.historyDesc {
         list-style-type: disc
     }
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #9d9d9d;
+    text-decoration-color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #9d9d9d;
+}
+
+.resume {
+    margin-bottom: 80px;
+}
