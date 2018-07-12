@@ -8,7 +8,7 @@
         <strong>{{candidate.firstName}} {{candidate.lastName}}</strong><br />
         {{candidate.address.address1 | uppercase}}<br />
         {{candidate.address.city | uppercase}} {{candidate.address.province | uppercase}} {{candidate.address.postCode}}<br />
-        <span class="glyphicon glyphicon-earphone"></span> <a href="+1{{candidate.phone}}">{{candidate.phone}}</a><br />
+        <span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{candidate.phone}}">{{candidate.phone}}</a><br />
         <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{candidate.email}}">{{candidate.email}}</a>
     </address>
 
