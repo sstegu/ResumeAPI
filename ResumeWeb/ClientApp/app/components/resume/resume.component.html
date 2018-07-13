@@ -4,14 +4,25 @@
     {{errorMessage}}
 </div>
 <div class="resume" *ngIf="candidate">
+
+    <div class="alert alert-success hidden-print">
+        <p>This resume is hosted on azure, built with an Angular front end that is supplied with data via a .Net Core Web API.</p>
+        <p>If you like to read code please check out the project <a target="_blank" href="https://github.com/sstegu/ResumeAPI">here</a>.</p>
+        <p>If you're still awake after that and like to read JSON by all means check out the <a target="_blank" href="{{apiUrl}}/api/candidates/1">API data</a>.</p>
+    </div>
+
     <address>
         <strong>{{candidate.firstName}} {{candidate.lastName}}</strong><br />
         {{candidate.address.address1 | uppercase}}<br />
         {{candidate.address.city | uppercase}} {{candidate.address.province | uppercase}} {{candidate.address.postCode}}<br />
-        <span class="glyphicon glyphicon-earphone hidden-xs"></span> <a class="hidden-xs" href="tel:{{candidate.phone}}">{{candidate.phone}}</a><br />
-        <span class="glyphicon glyphicon-envelope hidden-xs"></span> <a class="hidden-xs" href="mailto:{{candidate.email}}">{{candidate.email}}</a><br />
-        <img style="width:15px;height:auto;" src="../../img/GitHub-Mark-32px.png" class="hidden-xs" /> <a target="_blank" class="hidden-xs" href="https://github.com/sstegu">https://github.com/sstegu</a>
+        <div class="hidden-xs text-nowrap"><span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{candidate.phone}}">{{candidate.phone}}</a></div>
+        <div class="hidden-xs text-nowrap"><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{candidate.email}}">{{candidate.email}}</a></div>
+        <div class="hidden-xs text-nowrap"><img style="width:15px;height:auto;" src="../../img/GitHub-Mark-32px.png" /> <a target="_blank" href="https://github.com/sstegu">https://github.com/sstegu</a></div>
+        <div class="visible-print"><span class="glyphicon glyphicon-earphone"></span> {{candidate.phone}}</div>
+        <div class="visible-print"><span class="glyphicon glyphicon-envelope"></span> {{candidate.email}}</div>
+        <div class="visible-print"><img style="width:15px;height:auto;" src="../../img/GitHub-Mark-32px.png" /> https://github.com/sstegu</div>
     </address>
+
 
     <h3><span class="glyphicon glyphicon-education"></span> Education</h3>
     <ul>

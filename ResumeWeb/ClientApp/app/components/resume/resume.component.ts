@@ -15,7 +15,7 @@ export class ResumeComponent {
     private wait: boolean;
     private errorMessage: string = "Well...that was unexpected.  Do I get the job??";
 
-    constructor(api: ApiService, private globals: Globals) {
+    constructor(api: ApiService, private globals: Globals, @Inject("API_URL") public apiUrl: string) {
         this.error = false;
         this.globals.waiting = true;
         api.GetResumeData("1").subscribe(result => {
