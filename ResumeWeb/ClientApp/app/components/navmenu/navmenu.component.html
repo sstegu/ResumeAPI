@@ -1,4 +1,3 @@
-{{show}}
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="">
         <div class='navbar-header'>
@@ -8,7 +7,7 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' [routerLink]="['/home']">ResumeWeb</a>
+            <a class='navbar-brand' [routerLink]="['/home']"><span class='glyphicon glyphicon-user'></span> Sasha Stegu</a>
         </div>
 
         <div class='navbar-collapse collapse' [class.show]="show">
@@ -28,29 +27,3 @@
     </div>
 </nav>
 
-<!--<div class='navbar navbar-inverse'>
-    <div class='navbar-header'>
-        <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
-            <span class='sr-only'>Toggle navigation</span>
-            <span class='icon-bar'></span>
-            <span class='icon-bar'></span>
-            <span class='icon-bar'></span>
-        </button>
-        <a class='navbar-brand' [routerLink]="['/home']">ResumeWeb</a>
-    </div>
-    <div class='clearfix'></div>
-    <div class='navbar-collapse collapse'>
-        <ul class='nav navbar-nav'>
-            <li [routerLinkActive]="['link-active']">
-                <a [routerLink]="['/home']">
-                    <span class='glyphicon glyphicon-home'></span> Home
-                </a>
-            </li>
-            <li [routerLinkActive]="['link-active']">
-                <a [routerLink]="['/resume']">
-                    <span class='glyphicon glyphicon-th-list'></span> Resume
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>-->
