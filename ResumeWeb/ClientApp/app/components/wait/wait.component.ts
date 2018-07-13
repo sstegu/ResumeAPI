@@ -5,7 +5,7 @@ import { Globals } from '../../globals';
     selector: 'wait',
     styleUrls: ['wait.component.css'],
     template: `
-        <div *ngIf="globals.waiting" class="alert alert-info">Please wait...</div>
+        <div *ngIf="globals.waiting" class="wait alert alert-info">Please wait...</div>
     `
 })
 export class WaitComponent {

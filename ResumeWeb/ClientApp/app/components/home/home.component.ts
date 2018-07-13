@@ -12,7 +12,6 @@ import { ChangeDetectorRef } from '@angular/core';
 export class HomeComponent {
     public cvData: JSON;
     private error: boolean = false;
-    private wait: boolean = false;
     private company: string = "";
     private firstName: string = "";
     private lastName: string = "";
