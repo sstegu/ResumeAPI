@@ -24,12 +24,14 @@
     <None Remove="ClientApp\app\api.ts" />
     <None Remove="ClientApp\app\components\resume\splitStringPipe.ts" />
     <None Remove="ClientApp\app\globals.ts" />
+    <None Remove="ClientApp\app\router.animations.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\globals.ts" />
     <TypeScriptCompile Include="ClientApp\app\api.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\resume\splitStringPipe.ts" />
+    <TypeScriptCompile Include="ClientApp\app\router.animations.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

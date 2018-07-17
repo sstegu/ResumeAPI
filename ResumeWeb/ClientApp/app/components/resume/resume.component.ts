@@ -1,11 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '../../api';
 import { Globals } from '../../globals';
 
 @Component({
     selector: 'resume',
     templateUrl: './resume.component.html',
-    styleUrls: ['./resume.component.css'],
+    styleUrls: ['../../css/common.css', './resume.component.css'],
     providers: [ApiService]
 })
 

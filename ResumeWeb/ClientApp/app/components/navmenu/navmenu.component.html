@@ -13,12 +13,12 @@
         <div class='navbar-collapse collapse' [class.show]="show">
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']" data-toggle="collapse" (click)="toggleCollapse()">
+                    <a [routerLink]="['/home']" (click)="toggleCollapse()">
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/resume']" data-toggle="collapse" (click)="toggleCollapse()">
+                    <a [routerLink]="['/resume']" (click)="toggleCollapse()">
                         <span class='glyphicon glyphicon-th-list'></span> Resume
                     </a>
                 </li>

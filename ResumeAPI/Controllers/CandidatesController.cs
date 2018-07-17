@@ -30,7 +30,7 @@ namespace ResumeAPI.Controllers
         //}
 
         // GET: api/Candidates/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}/Resume")]
         [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
         public async Task<IActionResult> GetCandidate([FromRoute] int id)
         {
@@ -54,6 +54,26 @@ namespace ResumeAPI.Controllers
             foreach (var workHistory in candidate.WorkHistory)
             {
                 workHistory.Projects = workHistory.Projects.OrderBy(x => x.Order).ToList();
+            }
+
+            return Ok(candidate);
+        }
+
+        [HttpGet("{id}")]
+        [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
+        public async Task<IActionResult> GetCandidateIndicative([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            //FYI..minor pain point-> the .ThenInclude(x=>x.Projects) is not handled by intellisense but compiles fine 
+            var candidate = await _context.Candidate.Select(x => new { x.FirstName, x.LastName, x.Phone, x.Email, x.ID })
+                                                     .SingleOrDefaultAsync(m => m.ID == id);
+
+            if (candidate == null)
+            {
+                return NotFound();
             }
 
             return Ok(candidate);

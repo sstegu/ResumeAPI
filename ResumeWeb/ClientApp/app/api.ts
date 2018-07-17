@@ -10,8 +10,12 @@ export class ApiService {
         this.http = http;
     }
 
-    public GetResumeData(id: string): Observable<Response> {
+    public GetCandidate(id: string): Observable<Response> {
         return this.GetData("/api/Candidates/" + id);
+    }
+
+    public GetResumeData(id: string): Observable<Response> {
+        return this.GetData("/api/Candidates/" + id + "/Resume");
     }
 
     public GetCoverData(cguid: string): Observable<Response> {

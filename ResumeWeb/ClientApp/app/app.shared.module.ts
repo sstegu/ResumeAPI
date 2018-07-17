@@ -11,6 +11,8 @@ import { ResumeComponent } from './components/resume/resume.component';
 import { SplitStringPipe } from './components/resume/splitStringPipe';
 import { Globals } from './globals';
 import { WaitComponent } from './components/wait/wait.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
     declarations: [
@@ -19,6 +21,7 @@ import { WaitComponent } from './components/wait/wait.component';
         HomeComponent,
         ResumeComponent,
         WaitComponent,
+        FooterComponent,
         SplitStringPipe
     ],
     providers: [Globals],
