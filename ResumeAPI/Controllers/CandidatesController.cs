@@ -32,6 +32,7 @@ namespace ResumeAPI.Controllers
         // GET: api/Candidates/5
         [HttpGet("{id}/Resume")]
         [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
+        [ProducesResponseType(typeof(Candidate), 200)]
         public async Task<IActionResult> GetCandidate([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -61,6 +62,7 @@ namespace ResumeAPI.Controllers
 
         [HttpGet("{id}")]
         [ResponseCache(Duration = 300, Location = ResponseCacheLocation.Any)]
+        [ProducesResponseType(typeof(Candidate), 200)]
         public async Task<IActionResult> GetCandidateIndicative([FromRoute] int id)
         {
             if (!ModelState.IsValid)

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using ResumeAPI;
 using ResumeAPI.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ResumeAPI
 {
@@ -55,6 +56,7 @@ namespace ResumeAPI
                 }
             });
 
+
             services.AddSingleton<IFileProvider>(_hostingEnvironment.ContentRootFileProvider);
 
             services.AddScoped<DataSeeder>();
@@ -65,15 +67,30 @@ namespace ResumeAPI
 
             services.AddCors();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Resume API", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IFileProvider fileProvider, DataContext dataContext, IOptions<ApiSettings> settings)
         {
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Resume API V1");
+            });
+
             //use cross origin resource sharing
             app.UseCors(policy => policy.WithOrigins(settings.Value.CorsOrigins).WithMethods("GET"));
 

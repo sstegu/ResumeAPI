@@ -12,12 +12,14 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ResumeAPI.Models;
 
+
 namespace ResumeAPI
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+           
             var host = BuildWebHost(args);
 
             using (var scope = host.Services.CreateScope())
