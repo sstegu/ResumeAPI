@@ -42,11 +42,11 @@ namespace ResumeAPI
 
             services.Configure<ApiSettings>(Configuration.GetSection("ApiSettings"));
 
-            Boolean.TryParse(Configuration["ApiSettings:UseInMemory"], out bool useInMemory);
+            var config = Configuration.GetSection("ApiSettings").Get<ApiSettings>();
 
             services.AddDbContext<DataContext>(options =>
             {
-                if (useInMemory)
+                if (config.UseInMemory)
                 {
                     options.UseInMemoryDatabase("cvdb");
                 }
@@ -67,10 +67,15 @@ namespace ResumeAPI
 
             services.AddCors();
 
-            services.AddSwaggerGen(c =>
+
+
+            if (config.SwaggerInfo != null)
             {
-                c.SwaggerDoc("v1", new Info { Title = "Resume API", Version = "v1" });
-            });
+                services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc(config.SwaggerInfo.Version, config.SwaggerInfo);
+                });
+            }
 
         }
 
@@ -84,13 +89,17 @@ namespace ResumeAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseSwagger();
 
-            app.UseSwaggerUI(c =>
+
+            if (settings.Value.SwaggerInfo != null && !string.IsNullOrEmpty(settings.Value.SwaggerJson))
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Resume API V1");
-            });
+                app.UseSwagger();
 
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint(settings.Value.SwaggerJson, settings.Value.SwaggerInfo.Title);
+                });
+            }
             //use cross origin resource sharing
             app.UseCors(policy => policy.WithOrigins(settings.Value.CorsOrigins).WithMethods("GET"));
 
