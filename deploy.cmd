@@ -81,7 +81,7 @@ echo Building test project
 IF !ERRORLEVEL! NEQ 0 goto error
 
 echo Running tests
-vstest.console.exe "%DEPLOYMENT_SOURCE%\MvcTest.Tests\bin\Debug\MvcTest.Tests.dll"
+vstest.console.exe "%DEPLOYMENT_SOURCE%\ResumeAPITests.Tests\bin\Debug\ResumeAPITests.Tests.dll"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 2. Build to the temporary path
